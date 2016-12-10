@@ -1,0 +1,28 @@
+public class ProcessClick extends AppCompatActivity {
+   private EditText nameEditText;
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_add_event);
+       nameEditText = (EditText) findViewById(R.id.input_name);
+   }
+   public boolean onOptionsItemSelected(MenuItem item) {
+      boolean isError = false;
+      int id = item.getItemId();
+      if (nameEditText.getText().equals("")) {
+                nameEditText.setError("Please enter a name for your event");
+                isError = true;
+       }
+      if (!isError) {        
+           try {
+           Intent intent = new Intent();
+           JSONObject jsonObject = new JSONObject();
+           jsonObject.put("eventName", nameEditText.getText().toString());
+
+           }catch (Exception e) {
+                e.printStackTrace();
+            }
+       }
+    return super.onOptionsItemSelected(item);
+
+   }
+}
